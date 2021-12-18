@@ -12,7 +12,7 @@ const server = http.createServer(app);
 
 const io = require("socket.io")(server, {
     cors: {
-        origin: "http://127.0.0.1:5500",
+        origin: "http://localhost:3000",
         methods: ["GET", "POST"]
     }
 });
@@ -22,7 +22,7 @@ const socketIO = require('./sockets')(io)
 require('dotenv').config();
 
 // mongoose setup
-mongoose.connect(process.env.DB_URI, { useUnifiedTopology: true, useNewUrlParser: true })
+mongoose.connect(process.env.MONGO_URI, { useUnifiedTopology: true, useNewUrlParser: true })
 .then(_ => console.log("connected to mongoDB"))
 .catch(error => console.log(error.message));
 
